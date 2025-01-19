@@ -2,6 +2,8 @@
 
 下载抽卡模拟器.exe文件双击打开就可以运行了（需要Java环境），欧不欧皇，马上就知道😀
 
-## 展示如下：
-
+## 展示如下
+### 实体卡牌部分
+![image](https://github.com/SmerryBeta/Card-draw-simulation/blob/main/%E5%AE%9E%E4%BD%93%E5%8D%A1%E7%89%8C.png)
+### 虚拟道具部分
 ![image](https://github.com/SmerryBeta/Card-draw-simulation/blob/main/%E5%AE%9E%E4%BD%93%E5%8D%A1%E7%89%8C.png)
