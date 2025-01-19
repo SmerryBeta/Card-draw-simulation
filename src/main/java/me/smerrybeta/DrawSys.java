@@ -1,26 +1,26 @@
-package i.os.processHandler;
+package me.smerrybeta;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
+import me.smerrybeta.obj.ingame.GameDrawMa;
 
 public class DrawSys {
     public static void main (String[] args) {
-        // 文件路径
-        String filePath = "output.txt";
+        GameDrawMa gameDrawMa = new GameDrawMa();
 
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
-            for (int i = 0; i < 1000000; i++) {
-                DrawMachine drawMachine = new DrawMachine();
-                int sum = drawMachine.drawToComplete();
+        int sum = gameDrawMa.drawToComplete().values().stream().mapToInt(Integer::intValue).sum();
+        gameDrawMa.print();
+        boolean full = gameDrawMa.hasAll();
+        System.out.println("[INFO]本次抽卡：\033[1;31m" + (full ? "齐" : "未齐") + "\033[0m");
+        System.out.println("[INFO]现已抽卡：\033[1;31m " + sum + " \033[0m次，预计开支：\033[1;31m " + sum * 10 + " \033[0m元");
 
-                // 将 sum 写入文件
-                writer.write(String.valueOf(sum));
-                writer.newLine(); // 换行
-            }
-            System.out.println("保存完成: " + filePath);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        // 刷新已抽奖励列表
+        gameDrawMa.clear();
+
+        sum = gameDrawMa.draw(100).size();
+        gameDrawMa.print();
+        full = gameDrawMa.hasAll();
+        System.out.println("[INFO]本次抽卡：\033[1;31m" + (full ? "齐" : "未齐") + "\033[0m");
+        System.out.println("[INFO]现已抽卡：\033[1;31m " + sum + " \033[0m次，预计开支：\033[1;31m " + sum * 10 + " \033[0m元");
+
+        System.out.println(gameDrawMa.getPrizeNum());
     }
 }
